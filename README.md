@@ -1,4 +1,4 @@
-# Wear Bluff
+Wear Bluff
 
 ## Descripción
 Wear Bluff es una tienda de moda que inspira confianza y alienta a las personas a enfrentar sus miedos a través de la moda. Ofrecemos una variedad de productos diseñados con un enfoque tropical y elegante.
