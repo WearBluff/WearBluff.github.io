@@ -1,0 +1,406 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wear Bluff - Tienda Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fuente y color de fondo general */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+
+        /* Estilos del encabezado */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(34, 34, 34, 0.9); /* Fondo semi-transparente */
+            color: #fff;
+            padding: 15px 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(34, 34, 34, 1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between; /* Alinea logo a la izquierda y navegación a la derecha */
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .header-container img {
+            height: 40px; /* Ajusta la altura del logo */
+            margin-right: 20px; /* Espacio entre el logo y los enlaces */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end; /* Alinea los enlaces a la derecha */
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #e76f51;
+        }
+
+        /* Sección Hero con animación */
+        .hero {
+            background-image: url('WhatsApp Image 2024-09-29 at 17.17.58.jpeg'); /* URL de la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Superposición oscura */
+        }
+
+        .hero-content {
+            position: relative;
+            color: #fff;
+            z-index: 1;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        .hero button {
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero button:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.05);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Sección de Productos con espaciado y animación */
+        .section-title {
+            text-align: center;
+            margin: 80px 0 40px 0;
+            font-size: 2.5rem;
+            color: #264653;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: auto;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 80px; /* Espaciado hacia la sección de About */
+        }
+
+        .product-card {
+            background-color: #fff;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: #264653;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            color: #2a9d8f;
+            margin-bottom: 15px;
+        }
+
+        .product-card button {
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-card button:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.05);
+        }
+
+        /* Sección About con animación */
+        .about-section {
+            background-color: #fff;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            color: #264653;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Sección de Contacto */
+        .contact-section {
+            background-color: #f4f4f4;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            color: #264653;
+            margin-bottom: 20px;
+        }
+
+        .contact-section form {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .contact-section input,
+        .contact-section textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .contact-section button {
+            padding: 15px 30px;
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-section button:hover {
+            background-color: #21867a;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="wear-bluff-high-resolution-logo-white-transparent.png" alt="Wear Bluff Logo">
+            <nav>
+                <ul>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Bienvenido a Wear Bluff</h2>
+            <button>Explora Nuestros Productos</button>
+        </div>
+    </div>
+
+    <section id="productos">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="producto1.jpg" alt="Producto 1">
+                <h3>Camisa Tropical</h3>
+                <p>Camisa fresca y cómoda para tus días de playa.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto2.jpg" alt="Producto 2">
+                <h3>Short de Playa</h3>
+                <p>Perfecto para disfrutar del sol y la arena.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto3.jpg" alt="Producto 3">
+                <h3>Gorra de Sol</h3>
+                <p>Protege tu rostro del sol con estilo.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto4.jpg" alt="Producto 4">
+                <h3>Toalla de Playa</h3>
+                <p>Suave y absorbente, ideal para la playa.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto5.jpg" alt="Producto 5">
+                <h3>Sandalias Playeras</h3>
+                <p>Comodidad para tus paseos por la orilla.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto6.jpg" alt="Producto 6">
+                <h3>Bolso de Playa</h3>
+                <p>Ideal para llevar todo lo que necesitas.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto7.jpg" alt="Producto 7">
+                <h3>Vestido de Verano</h3>
+                <p>Ligero y fresco para el calor del verano.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto8.jpg" alt="Producto 8">
+                <h3>Campera de Noche</h3>
+                <p>Ligera y perfecta para las noches frescas.</p>
+                <button>Añadir al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="producto9.jpg" alt="Producto 9">
+                <h3>Pulsera Playera</h3>
+                <p>Accesorio ideal para resaltar tu estilo.</p>
+                <button>Añadir al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-section">
+            <h2>Sobre Nosotros</h2>
+            <p>En Wear Bluff, nuestra misión es ofrecerte la mejor moda playera con un estilo único y auténtico. Cada prenda está diseñada para que te sientas cómodo y a la moda mientras disfrutas del sol y la playa.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-section">
+            <h2>Contacto</h2>
+            <form>
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Tu Email" required>
+                <textarea rows="4" placeholder="Tu Mensaje" required></textarea>
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Cambia el color del encabezado al hacer scroll
+        window.onscroll = function() {
+            const header = document.querySelector('header');
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+    </script>
+</body>
+</html>
